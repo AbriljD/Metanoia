@@ -118,7 +118,6 @@
     <Compile Include="Entidades\Sesion.cs" />
     <Compile Include="Entidades\Tarea.cs" />
     <Compile Include="Entidades\Usuario.cs" />
-    <Compile Include="Logica\Logica.cs" />
     <Compile Include="Logica\LogicaDiario.cs" />
     <Compile Include="Logica\LogicaPublicacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -128,7 +127,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="AccesoDatos\ConexionLinq.dbml.layout">
+      <DependentUpon>ConexionLinq.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
   <ItemGroup>
     <None Include="AccesoDatos\ConexionLinq.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
@@ -143,11 +146,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="AccesoDatos\ConexionLinq.dbml.layout">
-      <DependentUpon>ConexionLinq.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
