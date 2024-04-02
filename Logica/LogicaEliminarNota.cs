@@ -35,6 +35,7 @@ namespace Metanoia.Logica
                     }
 
                     // Verificar si el ID de la nota es válido, si existe la nota
+                    //OLA
                     if (reqEliminarNota.diario.idDiario <= 0)
                     {
                         resEliminarNota.listaDeErrores.Add("ID de nota inválido.");
