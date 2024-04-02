@@ -71,6 +71,143 @@ namespace Metanoia.AccesoDatos
 			eRROR_DESCRIPCION = ((string)(result.GetParameterValue(8)));
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_ELIMINAR_MENSAJE_DIARIO")]
+		public int SP_ELIMINAR_MENSAJE_DIARIO([global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_DIARIO_ID", DbType="Int")] System.Nullable<int> p_DIARIO_ID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_DIARIO_ID);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_OBTENER_NOTAS_DIARIO")]
+		public ISingleResult<SP_OBTENER_NOTAS_DIARIOResult> SP_OBTENER_NOTAS_DIARIO([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UsuarioID", DbType="Int")] System.Nullable<int> usuarioID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FechaInicio", DbType="Date")] System.Nullable<System.DateTime> fechaInicio, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FechaFin", DbType="Date")] System.Nullable<System.DateTime> fechaFin)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuarioID, fechaInicio, fechaFin);
+			return ((ISingleResult<SP_OBTENER_NOTAS_DIARIOResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_EDITAR_MENSAJE_DIARIO")]
+		public int SP_EDITAR_MENSAJE_DIARIO([global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_TD_DIARIO_ID", DbType="Int")] System.Nullable<int> p_TD_DIARIO_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_TD_FECHA_ACTUALIZADO", DbType="Date")] System.Nullable<System.DateTime> p_TD_FECHA_ACTUALIZADO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_TD_TITULO", DbType="VarChar(255)")] string p_TD_TITULO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_TD_NOTA", DbType="VarChar(255)")] string p_TD_NOTA, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_TD_ESTADO", DbType="VarChar(25)")] string p_TD_ESTADO)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_TD_DIARIO_ID, p_TD_FECHA_ACTUALIZADO, p_TD_TITULO, p_TD_NOTA, p_TD_ESTADO);
+			return ((int)(result.ReturnValue));
+		}
+    }
+	
+	public partial class SP_OBTENER_NOTAS_DIARIOResult
+	{
+		
+		private int _Diario_id;
+		
+		private int _Diario_Usuario_id;
+		
+		private System.DateTime _Diario_Fecha_Creado;
+		
+		private System.DateTime _Diario_Fecha_Actualizado;
+		
+		private string _Diario_Titulo;
+		
+		private string _Diario_Nota;
+		
+		public SP_OBTENER_NOTAS_DIARIOResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Diario_id", DbType="Int NOT NULL")]
+		public int Diario_id
+		{
+			get
+			{
+				return this._Diario_id;
+			}
+			set
+			{
+				if ((this._Diario_id != value))
+				{
+					this._Diario_id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Diario_Usuario_id", DbType="Int NOT NULL")]
+		public int Diario_Usuario_id
+		{
+			get
+			{
+				return this._Diario_Usuario_id;
+			}
+			set
+			{
+				if ((this._Diario_Usuario_id != value))
+				{
+					this._Diario_Usuario_id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Diario_Fecha_Creado", DbType="Date NOT NULL")]
+		public System.DateTime Diario_Fecha_Creado
+		{
+			get
+			{
+				return this._Diario_Fecha_Creado;
+			}
+			set
+			{
+				if ((this._Diario_Fecha_Creado != value))
+				{
+					this._Diario_Fecha_Creado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Diario_Fecha_Actualizado", DbType="Date NOT NULL")]
+		public System.DateTime Diario_Fecha_Actualizado
+		{
+			get
+			{
+				return this._Diario_Fecha_Actualizado;
+			}
+			set
+			{
+				if ((this._Diario_Fecha_Actualizado != value))
+				{
+					this._Diario_Fecha_Actualizado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Diario_Titulo", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string Diario_Titulo
+		{
+			get
+			{
+				return this._Diario_Titulo;
+			}
+			set
+			{
+				if ((this._Diario_Titulo != value))
+				{
+					this._Diario_Titulo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Diario_Nota", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string Diario_Nota
+		{
+			get
+			{
+				return this._Diario_Nota;
+			}
+			set
+			{
+				if ((this._Diario_Nota != value))
+				{
+					this._Diario_Nota = value;
+				}
+			}
+		}
 	}
 }
 #pragma warning restore 1591

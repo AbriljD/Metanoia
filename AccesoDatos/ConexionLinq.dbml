@@ -12,4 +12,29 @@
     <Parameter Name="ERROR_DESCRIPCION" Parameter="eRROR_DESCRIPCION" Type="System.String" DbType="VarChar(255)" Direction="InOut" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.SP_ELIMINAR_MENSAJE_DIARIO" Method="SP_ELIMINAR_MENSAJE_DIARIO">
+    <Parameter Name="P_DIARIO_ID" Parameter="p_DIARIO_ID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_OBTENER_NOTAS_DIARIO" Method="SP_OBTENER_NOTAS_DIARIO">
+    <Parameter Name="UsuarioID" Parameter="usuarioID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FechaInicio" Parameter="fechaInicio" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="FechaFin" Parameter="fechaFin" Type="System.DateTime" DbType="Date" />
+    <ElementType Name="SP_OBTENER_NOTAS_DIARIOResult">
+      <Column Name="Diario_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Diario_Usuario_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Diario_Fecha_Creado" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Diario_Fecha_Actualizado" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Diario_Titulo" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Diario_Nota" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_EDITAR_MENSAJE_DIARIO" Method="SP_EDITAR_MENSAJE_DIARIO">
+    <Parameter Name="P_TD_DIARIO_ID" Parameter="p_TD_DIARIO_ID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="P_TD_FECHA_ACTUALIZADO" Parameter="p_TD_FECHA_ACTUALIZADO" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="P_TD_TITULO" Parameter="p_TD_TITULO" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="P_TD_NOTA" Parameter="p_TD_NOTA" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="P_TD_ESTADO" Parameter="p_TD_ESTADO" Type="System.String" DbType="VarChar(25)" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>
