@@ -15,5 +15,6 @@ namespace Metanoia.Entidades
         public string fechaActualizadoDiario { get; set; }
         public string tituloDiario { get; set; }
         public string notaDiario { get; set; }
+        public string estadoDiario { get; set; }
     }
 }

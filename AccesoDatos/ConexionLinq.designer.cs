@@ -22,7 +22,7 @@ namespace Metanoia.AccesoDatos
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="BDMetanoia")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="MetanoiaBD")]
 	public partial class ConexionLinqDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -30,16 +30,10 @@ namespace Metanoia.AccesoDatos
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnCreated();
-    partial void InsertTabla_Chat_IA(Tabla_Chat_IA instance);
-    partial void UpdateTabla_Chat_IA(Tabla_Chat_IA instance);
-    partial void DeleteTabla_Chat_IA(Tabla_Chat_IA instance);
-    partial void InsertTabla_Chat_Usuario(Tabla_Chat_Usuario instance);
-    partial void UpdateTabla_Chat_Usuario(Tabla_Chat_Usuario instance);
-    partial void DeleteTabla_Chat_Usuario(Tabla_Chat_Usuario instance);
     #endregion
 		
 		public ConexionLinqDataContext() : 
-				base(global::Metanoia.Properties.Settings.Default.BDMetanoiaConnectionString, mappingSource)
+				base(global::Metanoia.Properties.Settings.Default.MetanoiaBDConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -68,335 +62,150 @@ namespace Metanoia.AccesoDatos
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Tabla_Chat_IA> Tabla_Chat_IA
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_INSERTAR_MENSAJES_DIARIO")]
+		public int SP_INSERTAR_MENSAJES_DIARIO([global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_TD_USUARIO_ID", DbType="Int")] System.Nullable<int> p_TD_USUARIO_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_TD_FECHA_CREADO", DbType="Date")] System.Nullable<System.DateTime> p_TD_FECHA_CREADO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_TD_FECHA_ACTUALIZADO", DbType="Date")] System.Nullable<System.DateTime> p_TD_FECHA_ACTUALIZADO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_TD_TITULO", DbType="VarChar(255)")] string p_TD_TITULO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_TD_NOTA", DbType="VarChar(255)")] string p_TD_NOTA, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_TD_ESTADO", DbType="VarChar(25)")] string p_TD_ESTADO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID_RETURN", DbType="Int")] ref System.Nullable<int> iD_RETURN, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ERROR_ID", DbType="Int")] ref System.Nullable<int> eRROR_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ERROR_DESCRIPCION", DbType="VarChar(255)")] ref string eRROR_DESCRIPCION)
 		{
-			get
-			{
-				return this.GetTable<Tabla_Chat_IA>();
-			}
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_TD_USUARIO_ID, p_TD_FECHA_CREADO, p_TD_FECHA_ACTUALIZADO, p_TD_TITULO, p_TD_NOTA, p_TD_ESTADO, iD_RETURN, eRROR_ID, eRROR_DESCRIPCION);
+			iD_RETURN = ((System.Nullable<int>)(result.GetParameterValue(6)));
+			eRROR_ID = ((System.Nullable<int>)(result.GetParameterValue(7)));
+			eRROR_DESCRIPCION = ((string)(result.GetParameterValue(8)));
+			return ((int)(result.ReturnValue));
 		}
 		
-		public System.Data.Linq.Table<Tabla_Chat_Usuario> Tabla_Chat_Usuario
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_ELIMINAR_MENSAJE_DIARIO")]
+		public int SP_ELIMINAR_MENSAJE_DIARIO([global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_DIARIO_ID", DbType="Int")] System.Nullable<int> p_DIARIO_ID)
 		{
-			get
-			{
-				return this.GetTable<Tabla_Chat_Usuario>();
-			}
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_DIARIO_ID);
+			return ((int)(result.ReturnValue));
 		}
-	}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_OBTENER_NOTAS_DIARIO")]
+		public ISingleResult<SP_OBTENER_NOTAS_DIARIOResult> SP_OBTENER_NOTAS_DIARIO([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UsuarioID", DbType="Int")] System.Nullable<int> usuarioID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FechaInicio", DbType="Date")] System.Nullable<System.DateTime> fechaInicio, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FechaFin", DbType="Date")] System.Nullable<System.DateTime> fechaFin)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuarioID, fechaInicio, fechaFin);
+			return ((ISingleResult<SP_OBTENER_NOTAS_DIARIOResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_EDITAR_MENSAJE_DIARIO")]
+		public int SP_EDITAR_MENSAJE_DIARIO([global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_TD_DIARIO_ID", DbType="Int")] System.Nullable<int> p_TD_DIARIO_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_TD_FECHA_ACTUALIZADO", DbType="Date")] System.Nullable<System.DateTime> p_TD_FECHA_ACTUALIZADO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_TD_TITULO", DbType="VarChar(255)")] string p_TD_TITULO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_TD_NOTA", DbType="VarChar(255)")] string p_TD_NOTA, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_TD_ESTADO", DbType="VarChar(25)")] string p_TD_ESTADO)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_TD_DIARIO_ID, p_TD_FECHA_ACTUALIZADO, p_TD_TITULO, p_TD_NOTA, p_TD_ESTADO);
+			return ((int)(result.ReturnValue));
+		}
+    }
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tabla_Chat_IA")]
-	public partial class Tabla_Chat_IA : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class SP_OBTENER_NOTAS_DIARIOResult
 	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		private int _Diario_id;
 		
-		private int _Chat_IA_id;
+		private int _Diario_Usuario_id;
 		
-		private int _Chat_IA_Sesion_id;
+		private System.DateTime _Diario_Fecha_Creado;
 		
-		private string _Chat_IA_Mensaje;
+		private System.DateTime _Diario_Fecha_Actualizado;
 		
-		private System.DateTime _Chat_IA_Mensaje_Fecha_hora;
+		private string _Diario_Titulo;
 		
-		private string _Chat_IA_Estado;
+		private string _Diario_Nota;
 		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnChat_IA_idChanging(int value);
-    partial void OnChat_IA_idChanged();
-    partial void OnChat_IA_Sesion_idChanging(int value);
-    partial void OnChat_IA_Sesion_idChanged();
-    partial void OnChat_IA_MensajeChanging(string value);
-    partial void OnChat_IA_MensajeChanged();
-    partial void OnChat_IA_Mensaje_Fecha_horaChanging(System.DateTime value);
-    partial void OnChat_IA_Mensaje_Fecha_horaChanged();
-    partial void OnChat_IA_EstadoChanging(string value);
-    partial void OnChat_IA_EstadoChanged();
-    #endregion
-		
-		public Tabla_Chat_IA()
+		public SP_OBTENER_NOTAS_DIARIOResult()
 		{
-			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Chat_IA_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Chat_IA_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Diario_id", DbType="Int NOT NULL")]
+		public int Diario_id
 		{
 			get
 			{
-				return this._Chat_IA_id;
+				return this._Diario_id;
 			}
 			set
 			{
-				if ((this._Chat_IA_id != value))
+				if ((this._Diario_id != value))
 				{
-					this.OnChat_IA_idChanging(value);
-					this.SendPropertyChanging();
-					this._Chat_IA_id = value;
-					this.SendPropertyChanged("Chat_IA_id");
-					this.OnChat_IA_idChanged();
+					this._Diario_id = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Chat_IA_Sesion_id", DbType="Int NOT NULL")]
-		public int Chat_IA_Sesion_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Diario_Usuario_id", DbType="Int NOT NULL")]
+		public int Diario_Usuario_id
 		{
 			get
 			{
-				return this._Chat_IA_Sesion_id;
+				return this._Diario_Usuario_id;
 			}
 			set
 			{
-				if ((this._Chat_IA_Sesion_id != value))
+				if ((this._Diario_Usuario_id != value))
 				{
-					this.OnChat_IA_Sesion_idChanging(value);
-					this.SendPropertyChanging();
-					this._Chat_IA_Sesion_id = value;
-					this.SendPropertyChanged("Chat_IA_Sesion_id");
-					this.OnChat_IA_Sesion_idChanged();
+					this._Diario_Usuario_id = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Chat_IA_Mensaje", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
-		public string Chat_IA_Mensaje
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Diario_Fecha_Creado", DbType="Date NOT NULL")]
+		public System.DateTime Diario_Fecha_Creado
 		{
 			get
 			{
-				return this._Chat_IA_Mensaje;
+				return this._Diario_Fecha_Creado;
 			}
 			set
 			{
-				if ((this._Chat_IA_Mensaje != value))
+				if ((this._Diario_Fecha_Creado != value))
 				{
-					this.OnChat_IA_MensajeChanging(value);
-					this.SendPropertyChanging();
-					this._Chat_IA_Mensaje = value;
-					this.SendPropertyChanged("Chat_IA_Mensaje");
-					this.OnChat_IA_MensajeChanged();
+					this._Diario_Fecha_Creado = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Chat_IA_Mensaje_Fecha_hora", DbType="DateTime NOT NULL")]
-		public System.DateTime Chat_IA_Mensaje_Fecha_hora
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Diario_Fecha_Actualizado", DbType="Date NOT NULL")]
+		public System.DateTime Diario_Fecha_Actualizado
 		{
 			get
 			{
-				return this._Chat_IA_Mensaje_Fecha_hora;
+				return this._Diario_Fecha_Actualizado;
 			}
 			set
 			{
-				if ((this._Chat_IA_Mensaje_Fecha_hora != value))
+				if ((this._Diario_Fecha_Actualizado != value))
 				{
-					this.OnChat_IA_Mensaje_Fecha_horaChanging(value);
-					this.SendPropertyChanging();
-					this._Chat_IA_Mensaje_Fecha_hora = value;
-					this.SendPropertyChanged("Chat_IA_Mensaje_Fecha_hora");
-					this.OnChat_IA_Mensaje_Fecha_horaChanged();
+					this._Diario_Fecha_Actualizado = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Chat_IA_Estado", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
-		public string Chat_IA_Estado
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Diario_Titulo", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string Diario_Titulo
 		{
 			get
 			{
-				return this._Chat_IA_Estado;
+				return this._Diario_Titulo;
 			}
 			set
 			{
-				if ((this._Chat_IA_Estado != value))
+				if ((this._Diario_Titulo != value))
 				{
-					this.OnChat_IA_EstadoChanging(value);
-					this.SendPropertyChanging();
-					this._Chat_IA_Estado = value;
-					this.SendPropertyChanged("Chat_IA_Estado");
-					this.OnChat_IA_EstadoChanged();
+					this._Diario_Titulo = value;
 				}
 			}
 		}
 		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tabla_Chat_Usuario")]
-	public partial class Tabla_Chat_Usuario : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Chat_Usuario_id;
-		
-		private int _Chat_Usuario_Sesion_id;
-		
-		private string _Chat_Usuario_Mensaje;
-		
-		private System.DateTime _Chat_Usuario_Mensaje_Fecha_hora;
-		
-		private string _Chat_IA_Estado;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnChat_Usuario_idChanging(int value);
-    partial void OnChat_Usuario_idChanged();
-    partial void OnChat_Usuario_Sesion_idChanging(int value);
-    partial void OnChat_Usuario_Sesion_idChanged();
-    partial void OnChat_Usuario_MensajeChanging(string value);
-    partial void OnChat_Usuario_MensajeChanged();
-    partial void OnChat_Usuario_Mensaje_Fecha_horaChanging(System.DateTime value);
-    partial void OnChat_Usuario_Mensaje_Fecha_horaChanged();
-    partial void OnChat_IA_EstadoChanging(string value);
-    partial void OnChat_IA_EstadoChanged();
-    #endregion
-		
-		public Tabla_Chat_Usuario()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Chat_Usuario_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Chat_Usuario_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Diario_Nota", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string Diario_Nota
 		{
 			get
 			{
-				return this._Chat_Usuario_id;
+				return this._Diario_Nota;
 			}
 			set
 			{
-				if ((this._Chat_Usuario_id != value))
+				if ((this._Diario_Nota != value))
 				{
-					this.OnChat_Usuario_idChanging(value);
-					this.SendPropertyChanging();
-					this._Chat_Usuario_id = value;
-					this.SendPropertyChanged("Chat_Usuario_id");
-					this.OnChat_Usuario_idChanged();
+					this._Diario_Nota = value;
 				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Chat_Usuario_Sesion_id", DbType="Int NOT NULL")]
-		public int Chat_Usuario_Sesion_id
-		{
-			get
-			{
-				return this._Chat_Usuario_Sesion_id;
-			}
-			set
-			{
-				if ((this._Chat_Usuario_Sesion_id != value))
-				{
-					this.OnChat_Usuario_Sesion_idChanging(value);
-					this.SendPropertyChanging();
-					this._Chat_Usuario_Sesion_id = value;
-					this.SendPropertyChanged("Chat_Usuario_Sesion_id");
-					this.OnChat_Usuario_Sesion_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Chat_Usuario_Mensaje", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
-		public string Chat_Usuario_Mensaje
-		{
-			get
-			{
-				return this._Chat_Usuario_Mensaje;
-			}
-			set
-			{
-				if ((this._Chat_Usuario_Mensaje != value))
-				{
-					this.OnChat_Usuario_MensajeChanging(value);
-					this.SendPropertyChanging();
-					this._Chat_Usuario_Mensaje = value;
-					this.SendPropertyChanged("Chat_Usuario_Mensaje");
-					this.OnChat_Usuario_MensajeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Chat_Usuario_Mensaje_Fecha_hora", DbType="DateTime NOT NULL")]
-		public System.DateTime Chat_Usuario_Mensaje_Fecha_hora
-		{
-			get
-			{
-				return this._Chat_Usuario_Mensaje_Fecha_hora;
-			}
-			set
-			{
-				if ((this._Chat_Usuario_Mensaje_Fecha_hora != value))
-				{
-					this.OnChat_Usuario_Mensaje_Fecha_horaChanging(value);
-					this.SendPropertyChanging();
-					this._Chat_Usuario_Mensaje_Fecha_hora = value;
-					this.SendPropertyChanged("Chat_Usuario_Mensaje_Fecha_hora");
-					this.OnChat_Usuario_Mensaje_Fecha_horaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Chat_IA_Estado", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
-		public string Chat_IA_Estado
-		{
-			get
-			{
-				return this._Chat_IA_Estado;
-			}
-			set
-			{
-				if ((this._Chat_IA_Estado != value))
-				{
-					this.OnChat_IA_EstadoChanging(value);
-					this.SendPropertyChanging();
-					this._Chat_IA_Estado = value;
-					this.SendPropertyChanged("Chat_IA_Estado");
-					this.OnChat_IA_EstadoChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
