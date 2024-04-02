@@ -121,6 +121,7 @@
     <Compile Include="Logica\ActualizarNota.cs" />
     <Compile Include="Logica\LogicaAgregarNota.cs" />
     <Compile Include="Logica\LogicaEliminarNota.cs" />
+    <Compile Include="Logica\LogicaMeditacion.cs" />
     <Compile Include="Logica\LogicaObtenerNota.cs" />
     <Compile Include="Logica\LogicaPublicacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
