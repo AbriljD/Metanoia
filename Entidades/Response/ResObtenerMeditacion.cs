@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Metanoia.Entidades.Response
 {
-    public class ResObtenerMeditacion
+    public class ResObtenerMeditacion : ResBase
     {
         public List<Meditacion> playlistMeditacion { get; set; }
     }
