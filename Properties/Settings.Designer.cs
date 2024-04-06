@@ -33,5 +33,16 @@ namespace Metanoia.Properties {
                 return ((string)(this["BDMetanoiaConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=metanoiaserv.database.windows.net;Initial Catalog=MetanoiaBD;User ID=" +
+            "Adminsql;Password=Gatito123;Encrypt=True")]
+        public string MetanoiaBDConnectionString {
+            get {
+                return ((string)(this["MetanoiaBDConnectionString"]));
+            }
+        }
     }
 }

@@ -8,6 +8,6 @@ namespace Metanoia.Entidades.Request
 {
     public class ReqObtenerMeditacion
     {
-        
+        public Meditacion meditacion { get; set; }
     }
 }

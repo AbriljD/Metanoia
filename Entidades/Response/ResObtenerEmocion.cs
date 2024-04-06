@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Metanoia.Entidades.Response
 {
-    public class ResObtenerEmocion
+    public class ResObtenerEmocion : ResBase
     {
         public List<Emocion> listaDeEmociones { get; set; }
     }

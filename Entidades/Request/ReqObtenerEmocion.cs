@@ -8,6 +8,8 @@ namespace Metanoia.Entidades.Request
 {
     public  class ReqObtenerEmocion
     {
+
+        public Emocion emocion { get; set; }
         List<Emocion> listaDeEmociones { get; set; }
     }
 }
